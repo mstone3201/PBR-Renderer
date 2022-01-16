@@ -15,8 +15,8 @@ Input::Input() {
 	RegisterRawInputDevices(rid, 2, sizeof(RAWINPUTDEVICE));
 
 	keymap[(unsigned)KEYBIND::INPUT_MENU] = VK_ESCAPE;
-	keymap[(unsigned)KEYBIND::INPUT_ROTATE_LEFT] = 0x41;
-	keymap[(unsigned)KEYBIND::INPUT_ROTATE_RIGHT] = 0x44;
+	keymap[(unsigned)KEYBIND::INPUT_ROTATE] = VK_LBUTTON;
+	keymap[(unsigned)KEYBIND::INPUT_PAN] = VK_RBUTTON;
 }
 
 void Input::processMouse(RAWMOUSE mouse) {

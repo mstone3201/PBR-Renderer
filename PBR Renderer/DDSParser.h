@@ -43,4 +43,5 @@ struct DDS_HEADER_DXT10 {
 	UINT                     miscFlags2;
 };
 
-HRESULT readDDSFile(std::string, DDS_HEADER&, DDS_HEADER_DXT10&, unsigned char*&);
+HRESULT readDDSFile(std::string, DDS_HEADER&, DDS_HEADER_DXT10&, unsigned char*&),
+	readDDSFiles(std::string*, unsigned, DDS_HEADER&, DDS_HEADER_DXT10&, unsigned char*&);

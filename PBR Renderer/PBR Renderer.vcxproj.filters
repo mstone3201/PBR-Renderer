@@ -120,6 +120,30 @@
     <ClCompile Include="IndexBuffer.cpp">
       <Filter>Graphics\Shaders\_Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DepthTexture.cpp">
+      <Filter>Graphics\Shaders\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderTexture.cpp">
+      <Filter>Graphics\Shaders\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshParser.cpp">
+      <Filter>Parsers\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Scene\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraController.cpp">
+      <Filter>Scene\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Geometry.cpp">
+      <Filter>Graphics\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DepthState.cpp">
+      <Filter>Graphics\_Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Graphics\_Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Timer.h">
@@ -173,6 +197,30 @@
     <ClInclude Include="IndexBuffer.h">
       <Filter>Graphics\Shaders\_Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DepthTexture.h">
+      <Filter>Graphics\Shaders\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTexture.h">
+      <Filter>Graphics\Shaders\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshParser.h">
+      <Filter>Parsers\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Scene\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>Scene\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Geometry.h">
+      <Filter>Graphics\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DepthState.h">
+      <Filter>Graphics\_Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Graphics\_Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="ForwardPBRVS.hlsl">
@@ -185,6 +233,15 @@
       <Filter>Graphics\Shaders\Vertex Shaders</Filter>
     </FxCompile>
     <FxCompile Include="SkyBoxPS.hlsl">
+      <Filter>Graphics\Shaders\Pixel Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="color.hlsl">
+      <Filter>Graphics\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PostVS.hlsl">
+      <Filter>Graphics\Shaders\Vertex Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="PostPS.hlsl">
       <Filter>Graphics\Shaders\Pixel Shaders</Filter>
     </FxCompile>
   </ItemGroup>

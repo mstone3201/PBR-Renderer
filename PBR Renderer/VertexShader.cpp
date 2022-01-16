@@ -32,7 +32,7 @@ HRESULT VertexShader::initForwardPBR(Graphics& graphics, ID3D11VertexShader** sh
 		{ "TANGENT", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{ "BINORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
 		{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+		{ "TEXCOORD", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 }
 	};
 	return init(graphics, shader, inputLayout, inputs, 5, "ForwardPBRVS.cso");
 }
@@ -50,4 +50,15 @@ HRESULT VertexShader::initSkyBox(Graphics& graphics, ID3D11VertexShader** shader
 
 HRESULT VertexShader::initSkyBox(Graphics& graphics, ID3D11VertexShader** shader) {
 	return init(graphics, shader, "SkyBoxVS.cso");
+}
+
+HRESULT VertexShader::initPost(Graphics& graphics, ID3D11VertexShader** shader, ID3D11InputLayout** inputLayout) {
+	D3D11_INPUT_ELEMENT_DESC inputs[1] = { // vertex data in slot 1
+		{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 1, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 }
+	};
+	return init(graphics, shader, inputLayout, inputs, 1, "PostVS.cso");
+}
+
+HRESULT VertexShader::initPost(Graphics& graphics, ID3D11VertexShader** shader) {
+	return init(graphics, shader, "PostVS.cso");
 }

@@ -4,6 +4,7 @@
 #include "Input.h"
 #include "Graphics.h"
 #include "Scene.h"
+#include "CameraController.h"
 
 class Game {
 	HWND hwnd;
@@ -12,6 +13,7 @@ class Game {
 	Input input;
 	Graphics graphics;
 	Scene scene;
+	CameraController cameraController;
 public:
 	Game(HINSTANCE);
 	HRESULT init();

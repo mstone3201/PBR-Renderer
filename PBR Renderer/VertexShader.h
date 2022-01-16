@@ -9,5 +9,7 @@ namespace VertexShader {
 		initForwardPBR(Graphics&, ID3D11VertexShader**, ID3D11InputLayout**),
 		initForwardPBR(Graphics&, ID3D11VertexShader**),
 		initSkyBox(Graphics&, ID3D11VertexShader**, ID3D11InputLayout**),
-		initSkyBox(Graphics&, ID3D11VertexShader**);
+		initSkyBox(Graphics&, ID3D11VertexShader**),
+		initPost(Graphics&, ID3D11VertexShader**, ID3D11InputLayout**),
+		initPost(Graphics&, ID3D11VertexShader**);
 }

@@ -6,9 +6,9 @@
 
 struct GameMetrics {
 	LPCWSTR gameName = L"PBR Renderer";
-	unsigned width = 800, height = 600;
+	unsigned width = 1920, height = 1080;
 	bool fullScreen = false;
-	float fov = DirectX::XMConvertToRadians(75.0f), screenNear = 0.01f, screenFar = 50.0f,
+	float fov = DirectX::XMConvertToRadians(50.0f), screenNear = 0.01f, screenFar = 50.0f,
 		mouseSensitivity = 1.5f;
 	UINT anisotropy = D3D11_MAX_MAXANISOTROPY;
 	GameMetrics();

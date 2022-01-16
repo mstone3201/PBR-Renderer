@@ -1,6 +1,9 @@
-cbuffer matrices : register(b0) {
-	float4x4 worldMatrix, viewMatrix, projMatrix;
+cbuffer viewTransform : register(b0) {
+	float4x4 viewMatrix, invViewMatrix;
 };
+cbuffer projTransform : register(b1) {
+	float4x4 projMatrix, invProjMatrix;
+}
 
 struct vsOutput {
 	float4 position : SV_POSITION;

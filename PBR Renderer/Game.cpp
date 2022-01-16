@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "GameMetrics.h"
 
-Game::Game(HINSTANCE hInstance) {
+Game::Game(HINSTANCE hInstance) : scene(cameraController) {
 	gameHandle = this;
 
 	WNDCLASSEX wcx{};
@@ -47,6 +47,8 @@ int Game::loop() {
 		timer.start();
 
 		if(input.keyDown(KEYBIND::INPUT_MENU)) running = false;
+
+		cameraController.update(elapsed, input);
 
 		scene.update(elapsed);
 

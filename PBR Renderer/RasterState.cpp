@@ -1,6 +1,6 @@
 #include "RasterState.h"
 
-HRESULT RasterState::init(Graphics& graphics, ID3D11RasterizerState** rasterState, D3D11_CULL_MODE cullMode) {
+HRESULT RasterState::init(Graphics& graphics, ID3D11RasterizerState** state, D3D11_CULL_MODE cullMode) {
 	D3D11_RASTERIZER_DESC rasterDesc{};
 	rasterDesc.FillMode = D3D11_FILL_SOLID;
 	rasterDesc.CullMode = cullMode;
@@ -13,5 +13,5 @@ HRESULT RasterState::init(Graphics& graphics, ID3D11RasterizerState** rasterStat
 	rasterDesc.MultisampleEnable = false;
 	rasterDesc.AntialiasedLineEnable = false;
 
-	return graphics.getDevice()->CreateRasterizerState(&rasterDesc, rasterState);
+	return graphics.getDevice()->CreateRasterizerState(&rasterDesc, state);
 }

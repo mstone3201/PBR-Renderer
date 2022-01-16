@@ -1,15 +1,12 @@
 #include "Graphics.h"
 #include "GameMetrics.h"
 
-Graphics::Graphics() {
-	viewPort.TopLeftX = viewPort.TopLeftY = viewPort.MinDepth = 0.0f;
-	viewPort.MaxDepth = 1.0f;
-}
+Graphics::Graphics() {}
 
 Graphics::~Graphics() {
+	if(swapChain) swapChain->Release();
 	if(device) device->Release();
 	if(deviceContext) deviceContext->Release();
-	if(swapChain) swapChain->Release();
 	if(backBuffer) backBuffer->Release();
 }
 
@@ -67,15 +64,12 @@ void Graphics::setFullScreen(bool full) {
 	swapChain->SetFullscreenState(full, 0);
 }
 
-void Graphics::prepareTarget() {
-	deviceContext->OMSetRenderTargets(1, &backBuffer, 0);
-	deviceContext->RSSetViewports(1, &viewPort);
-	float background[4] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	deviceContext->ClearRenderTargetView(backBuffer, background);
-}
-
 void Graphics::render() {
 	swapChain->Present(0, 0);
+}
+
+IDXGISwapChain* Graphics::getSwapChain() {
+	return swapChain;
 }
 
 ID3D11Device* Graphics::getDevice() {
@@ -84,4 +78,8 @@ ID3D11Device* Graphics::getDevice() {
 
 ID3D11DeviceContext* Graphics::getDeviceContext() {
 	return deviceContext;
+}
+
+ID3D11RenderTargetView* Graphics::getBackBuffer() {
+	return backBuffer;
 }

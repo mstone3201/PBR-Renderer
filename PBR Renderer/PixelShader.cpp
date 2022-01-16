@@ -19,3 +19,7 @@ HRESULT PixelShader::initForwardPBR(Graphics& graphics, ID3D11PixelShader** shad
 HRESULT PixelShader::initSkyBox(Graphics& graphics, ID3D11PixelShader** shader) {
 	return init(graphics, shader, "SkyBoxPS.cso");
 }
+
+HRESULT PixelShader::initPost(Graphics& graphics, ID3D11PixelShader** shader) {
+	return init(graphics, shader, "PostPS.cso");
+}

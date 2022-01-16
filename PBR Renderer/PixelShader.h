@@ -6,5 +6,6 @@
 namespace PixelShader {
 	HRESULT init(Graphics&, ID3D11PixelShader**, std::string),
 		initForwardPBR(Graphics&, ID3D11PixelShader**),
-		initSkyBox(Graphics&, ID3D11PixelShader**);
+		initSkyBox(Graphics&, ID3D11PixelShader**),
+		initPost(Graphics&, ID3D11PixelShader**);
 }

@@ -1,9 +1,9 @@
 #include "IndexBuffer.h"
 
-HRESULT IndexBuffer::init(Graphics& graphics, ID3D11Buffer** buffer, void* indices, unsigned numIndices, unsigned stride) {
+HRESULT IndexBuffer::init(Graphics& graphics, ID3D11Buffer** buffer, void* indices, unsigned size) {
 	D3D11_BUFFER_DESC bufferDesc{};
-	bufferDesc.ByteWidth = numIndices*stride;
-	bufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	bufferDesc.ByteWidth = size;
+	bufferDesc.Usage = D3D11_USAGE_IMMUTABLE;
 	bufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	bufferDesc.CPUAccessFlags = 0;
 	bufferDesc.MiscFlags = 0;
