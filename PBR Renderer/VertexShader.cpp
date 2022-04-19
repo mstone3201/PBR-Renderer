@@ -4,12 +4,11 @@
 HRESULT VertexShader::init(Graphics& graphics, ID3D11VertexShader** shader, ID3D11InputLayout** inputLayout, D3D11_INPUT_ELEMENT_DESC* inputs, unsigned numInputs, std::string shaderFile) {
 	unsigned char* shaderBytes;
 	size_t shaderSize = readShaderFile(shaderFile, shaderBytes);
-	if(!shaderSize) return D3D11_ERROR_FILE_NOT_FOUND;
+	if(!shaderSize) return ERROR_FILE_NOT_FOUND;
 
 	HRESULT result = graphics.getDevice()->CreateVertexShader((void*)shaderBytes, shaderSize, 0, shader);
-	if(SUCCEEDED(result)) {
+	if(SUCCEEDED(result))
 		result = graphics.getDevice()->CreateInputLayout(inputs, numInputs, (void*)shaderBytes, shaderSize, inputLayout);
-	}
 
 	delete[] shaderBytes;
 	return result;
@@ -18,7 +17,7 @@ HRESULT VertexShader::init(Graphics& graphics, ID3D11VertexShader** shader, ID3D
 HRESULT VertexShader::init(Graphics& graphics, ID3D11VertexShader** shader, std::string shaderFile) {
 	unsigned char* shaderBytes;
 	size_t shaderSize = readShaderFile(shaderFile, shaderBytes);
-	if(!shaderSize) return D3D11_ERROR_FILE_NOT_FOUND;
+	if(!shaderSize) return ERROR_FILE_NOT_FOUND;
 
 	HRESULT result = graphics.getDevice()->CreateVertexShader((void*)shaderBytes, shaderSize, 0, shader);
 

@@ -1,7 +1,7 @@
 #include "DDSParser.h"
 
 HRESULT readDDSFile(std::string fileName, DDS_HEADER& header, DDS_HEADER_DXT10& header10, unsigned char*& data) {
-	HRESULT result = D3D11_ERROR_FILE_NOT_FOUND;
+	HRESULT result = ERROR_FILE_NOT_FOUND;
 
 	DWORD dwMagic;
 
@@ -31,12 +31,12 @@ HRESULT readDDSFile(std::string fileName, DDS_HEADER& header, DDS_HEADER_DXT10& 
 }
 
 HRESULT readDDSFiles(std::string* fileNames, unsigned numFiles, DDS_HEADER& header, DDS_HEADER_DXT10& header10, unsigned char*& data) {
-	HRESULT result = D3D11_ERROR_FILE_NOT_FOUND;
+	HRESULT result = ERROR_FILE_NOT_FOUND;
 
 	DWORD dwMagic;
 
 	FILE* file;
-	size_t size;
+	size_t size = 0;
 	fopen_s(&file, fileNames[0].c_str(), "rb");
 	if(file) {
 		fread(&dwMagic, sizeof(DWORD), 1, file);
@@ -58,6 +58,8 @@ HRESULT readDDSFiles(std::string* fileNames, unsigned numFiles, DDS_HEADER& head
 		fclose(file);
 	}
 
+	if(FAILED(result)) return result;
+
 	for(unsigned i = 1; i < numFiles && SUCCEEDED(result); i++) {
 		fopen_s(&file, fileNames[i].c_str(), "rb");
 		if(file) {
@@ -71,9 +73,11 @@ HRESULT readDDSFiles(std::string* fileNames, unsigned numFiles, DDS_HEADER& head
 					result = S_OK;
 				} else result = E_INVALIDARG;
 			} else result = E_INVALIDARG;
-		} else result = D3D11_ERROR_FILE_NOT_FOUND;
 
-		fclose(file);
+			fclose(file);
+		} else result = ERROR_FILE_NOT_FOUND;
+
+		if(FAILED(result)) return result;
 	}
 
 	return result;

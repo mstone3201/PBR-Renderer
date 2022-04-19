@@ -45,7 +45,7 @@ float D(float NH, float roughness) {
 	return a2 / max(PI * div * div, 1e-8f);
 }
 
-// Specular G - optimize out NL * NV from the numerator
+// Specular G - cancel out NL * NV from the numerator
 float G1(float NX, float k) {
 	return 1.0f / (NX * (1.0f - k) + k);
 }
@@ -62,7 +62,7 @@ float3 F(float VH, float3 F0) {
 }
 
 // Fresnel with fudged roughness term
-float3 F_roughness(float3 NV, float3 F0, float3 roughness) {
+float3 F_roughness(float NV, float3 F0, float roughness) {
 	return F0 + ldexp(saturate(1.0f - roughness - F0), (-5.55473f * NV - 6.98316f) * NV);
 }
 
@@ -88,7 +88,7 @@ float4 main(psInput input) : SV_TARGET {
 	// accumulate analytical light contribution
 	float3 Ir = 0.0f;
 	for(uint i = 0; i < 2; i++) {
-		// light vector point from pixel to light
+		// light vector pointing from pixel to light
 		float3 PtoL = lightPos[i] - input.worldPos;
 		float distance = length(PtoL);
 		float3 L = PtoL / distance;
@@ -101,7 +101,7 @@ float4 main(psInput input) : SV_TARGET {
 
 		// specular contribution
 		float3 Fx = F(VH, specColor); // F0 = specColor
-		float3 Rs = D(NH, roughness) * G(NL, NV, roughness) * Fx / 4.0f; // optimize out NL * NV from the denominator
+		float3 Rs = D(NH, roughness) * G(NL, NV, roughness) * Fx / 4.0f; // cancel out NL * NV from the denominator
 
 		// diffuse contribution
 		float3 Rd = diffColor * INV_PI;

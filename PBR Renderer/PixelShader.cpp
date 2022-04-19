@@ -4,7 +4,7 @@
 HRESULT PixelShader::init(Graphics& graphics, ID3D11PixelShader** shader, std::string shaderFile) {
 	unsigned char* shaderBytes;
 	size_t shaderSize = readShaderFile(shaderFile, shaderBytes);
-	if(!shaderSize) return D3D11_ERROR_FILE_NOT_FOUND;
+	if(!shaderSize) return ERROR_FILE_NOT_FOUND;
 
 	HRESULT result = graphics.getDevice()->CreatePixelShader((void*)shaderBytes, shaderSize, 0, shader);
 

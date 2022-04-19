@@ -1,7 +1,7 @@
 #include "MeshParser.h"
 
 HRESULT readMeshFile(std::string fileName, MESH_HEADER& header, unsigned char*& data) {
-	HRESULT result = D3D11_ERROR_FILE_NOT_FOUND;
+	HRESULT result = ERROR_FILE_NOT_FOUND;
 
 	FILE* file;
 	fopen_s(&file, fileName.c_str(), "rb");

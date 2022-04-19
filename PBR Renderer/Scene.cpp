@@ -194,7 +194,7 @@ HRESULT Scene::init(Graphics& graphics) {
 	// update permanent constant buffers
 	result = ConstantBuffer::setData(graphics, constantBuffers[1], camera.projTransform, sizeof(float) * 32);
 	if(FAILED(result)) return result;
-	ConstantBuffer::setData(graphics, constantBuffers[2], worldTransform, sizeof(float) * 32);
+	result = ConstantBuffer::setData(graphics, constantBuffers[2], worldTransform, sizeof(float) * 32);
 
 	return result;
 }

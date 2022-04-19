@@ -1,8 +1,8 @@
 #pragma once
 
 #include <fstream>
-#include <d3d11.h>
 #include <vector>
+#include <winerror.h>
 
 struct MESH_HEADER {
 	unsigned vertexSize;
